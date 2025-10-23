@@ -9,6 +9,46 @@
 
 This assignment brings together **five essential design patterns** from Weeks 7-8 in one cohesive game character system. You'll implement behavioral patterns (Strategy, Command, Template Method) and creational patterns (Factory Method, Builder) while understanding how patterns work together in real applications.
 
+## What You're Building
+
+You're building a **turn-based RPG combat system** - not a playable game, but a professional-quality **demonstration framework** that shows how game developers use design patterns to create flexible, maintainable code.
+
+Think of classic RPGs like Final Fantasy or Pokémon:
+- Different **character classes** (Warrior, Mage, Archer, Rogue) with unique abilities
+- Each character has **stats** (HP, attack power, defense, mana)
+- Characters **attack** using different strategies (melee, magic, ranged)
+- Combat follows **sequences** (prepare → strike → follow-up)
+- Actions are **undoable** (command pattern for save states)
+
+### Why These Patterns?
+
+Each pattern solves a real game development problem:
+
+1. **Strategy Pattern**: How do you make a Warrior fight differently than a Mage without messy if-statements everywhere?
+2. **Factory Method**: How do you create complex characters without repeating setup code?
+3. **Builder Pattern**: How do you customize characters beyond factory presets?
+4. **Command Pattern**: How do you implement undo/redo and track action history?
+5. **Template Method**: How do you standardize combat sequences while allowing variations?
+
+### What Makes This Real
+
+This isn't toy code - it demonstrates professional techniques:
+- **Open-Closed Principle**: Add new character types or strategies without modifying existing code
+- **Composition over Inheritance**: Characters have strategies rather than being locked into class hierarchies
+- **Testability**: Every behavior is isolated and testable
+- **Modern Java**: Uses records, switch expressions, and functional interfaces
+
+### Your Learning Journey
+
+You'll implement **17 TODOs** across the five patterns. As you complete each one:
+- More tests pass (48 total tests)
+- The system becomes more capable
+- You see patterns working together
+
+When finished, run `./gradlew run` to see an interactive demo showing all patterns collaborating in realistic battle scenarios.
+
+This is how you learn design patterns - not from abstract diagrams, but from building a system that **solves real problems with elegant solutions**.
+
 ## Learning Objectives
 
 - Master the Strategy pattern for interchangeable algorithms
