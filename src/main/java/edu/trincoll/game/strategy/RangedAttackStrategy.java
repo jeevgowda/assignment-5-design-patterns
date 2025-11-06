@@ -30,7 +30,18 @@ import edu.trincoll.game.model.Character;
 public class RangedAttackStrategy implements AttackStrategy {
     @Override
     public int calculateDamage(Character attacker, Character target) {
-        // TODO 1c: Implement ranged attack with critical hit logic
-        throw new UnsupportedOperationException("TODO 1c: Implement ranged attack calculation");
+        // Base damage = attacker's attack power
+        int baseDamage = attacker.getStats().attack();
+        // Apply 80% accuracy (multiply by 0.8)
+        int damageWithAccuracy = (int) (baseDamage * 0.8);
+        
+        // Check for critical hit: if target's health < 30% of max, add 50% bonus
+        double healthPercentage = (double) target.getStats().health() / target.getStats().maxHealth();
+        if (healthPercentage < 0.3) {
+            // Critical hit! Add 50% bonus
+            damageWithAccuracy = (int) (damageWithAccuracy * 1.5);
+        }
+        
+        return damageWithAccuracy;
     }
 }

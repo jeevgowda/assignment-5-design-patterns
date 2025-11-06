@@ -26,8 +26,10 @@ public class CommandInvoker {
      * 2. Add the command to history: commandHistory.push(command)
      */
     public void executeCommand(GameCommand command) {
-        // TODO 4c: Implement command execution
-        throw new UnsupportedOperationException("TODO 4c: Implement executeCommand()");
+        // Execute the command
+        command.execute();
+        // Add the command to history
+        commandHistory.push(command);
     }
 
     /**
@@ -39,8 +41,14 @@ public class CommandInvoker {
      * 3. Call undo() on that command
      */
     public void undoLastCommand() {
-        // TODO 4c: Implement undo
-        throw new UnsupportedOperationException("TODO 4c: Implement undoLastCommand()");
+        // Check if history is empty
+        if (commandHistory.isEmpty()) {
+            return;
+        }
+        // Pop the last command from history
+        GameCommand command = commandHistory.pop();
+        // Call undo on that command
+        command.undo();
     }
 
     /**

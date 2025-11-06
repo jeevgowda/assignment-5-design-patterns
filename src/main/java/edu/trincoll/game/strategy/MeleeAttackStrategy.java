@@ -21,7 +21,9 @@ import edu.trincoll.game.model.Character;
 public class MeleeAttackStrategy implements AttackStrategy {
     @Override
     public int calculateDamage(Character attacker, Character target) {
-        // TODO 1a: Implement melee attack calculation
-        throw new UnsupportedOperationException("TODO 1a: Implement melee attack calculation");
+        // Base damage = attacker's attack power
+        int baseDamage = attacker.getStats().attack();
+        // Add 20% bonus (multiply by 1.2)
+        return (int) (baseDamage * 1.2);
     }
 }

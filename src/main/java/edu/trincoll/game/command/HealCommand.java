@@ -32,14 +32,22 @@ public class HealCommand implements GameCommand {
 
     @Override
     public void execute() {
-        // TODO 4b: Implement heal execution
-        throw new UnsupportedOperationException("TODO 4b: Implement HealCommand.execute()");
+        // Store the target's current health before healing
+        int healthBefore = target.getStats().health();
+        // Heal the target
+        target.heal(amount);
+        // Store the target's health after healing
+        int healthAfter = target.getStats().health();
+        // Calculate actual healing done (in case healing was capped by max health)
+        actualHealingDone = healthAfter - healthBefore;
     }
 
     @Override
     public void undo() {
-        // TODO 4b: Implement heal undo
-        throw new UnsupportedOperationException("TODO 4b: Implement HealCommand.undo()");
+        // Restore health to before healing by dealing damage
+        // Note: We use takeDamage which applies defense, but since we're undoing
+        // our own heal, we need to damage for the exact amount healed
+        target.takeDamage(actualHealingDone);
     }
 
     @Override
