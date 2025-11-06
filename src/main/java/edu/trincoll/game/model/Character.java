@@ -174,8 +174,23 @@ public class Character {
          * while ensuring all required fields are provided before construction.
          */
         public Character build() {
-            // TODO: Implement validation and construction
-            throw new UnsupportedOperationException("TODO 3: Implement build() method");
+            if (name == null) {
+                throw new IllegalStateException("name is required");
+            }
+            if (type == null) {
+                throw new IllegalStateException("type is required");
+            }
+            if (stats == null) {
+                throw new IllegalStateException("stats is required");
+            }
+            if (attackStrategy == null) {
+                throw new IllegalStateException("attackStrategy is required");
+            }
+            if (defenseStrategy == null) {
+                throw new IllegalStateException("defenseStrategy is required");
+            }
+            
+            return new Character(name, type, stats, attackStrategy, defenseStrategy);
         }
     }
 
