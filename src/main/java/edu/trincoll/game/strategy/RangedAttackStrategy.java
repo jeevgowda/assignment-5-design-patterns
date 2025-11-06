@@ -31,7 +31,7 @@ public class RangedAttackStrategy implements AttackStrategy {
     @Override
     public int calculateDamage(Character attacker, Character target) {
         // Base damage = attacker's attack power
-        int baseDamage = attacker.getStats().attack();
+        int baseDamage = attacker.getStats().attackPower();
         // Apply 80% accuracy (multiply by 0.8)
         int damageWithAccuracy = (int) (baseDamage * 0.8);
         

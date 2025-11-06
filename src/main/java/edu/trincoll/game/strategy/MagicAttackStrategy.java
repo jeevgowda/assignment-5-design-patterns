@@ -25,7 +25,7 @@ public class MagicAttackStrategy implements AttackStrategy {
     @Override
     public int calculateDamage(Character attacker, Character target) {
         // Base damage = attacker's attack power
-        int baseDamage = attacker.getStats().attack();
+        int baseDamage = attacker.getStats().attackPower();
         // Mana bonus = current mana / 10 (integer division)
         int manaBonus = attacker.getStats().mana() / 10;
         // Total damage = base + mana bonus

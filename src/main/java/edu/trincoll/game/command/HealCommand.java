@@ -23,7 +23,7 @@ import edu.trincoll.game.model.Character;
 public class HealCommand implements GameCommand {
     private final Character target;
     private final int amount;
-    private int actualHealingDone;
+    private int healthBeforeHealing;
 
     public HealCommand(Character target, int amount) {
         this.target = target;
@@ -33,21 +33,19 @@ public class HealCommand implements GameCommand {
     @Override
     public void execute() {
         // Store the target's current health before healing
-        int healthBefore = target.getStats().health();
+        healthBeforeHealing = target.getStats().health();
         // Heal the target
         target.heal(amount);
         // Store the target's health after healing
         int healthAfter = target.getStats().health();
         // Calculate actual healing done (in case healing was capped by max health)
-        actualHealingDone = healthAfter - healthBefore;
+        // Note: This is stored but not needed for undo since we restore exact health
     }
 
     @Override
     public void undo() {
-        // Restore health to before healing by dealing damage
-        // Note: We use takeDamage which applies defense, but since we're undoing
-        // our own heal, we need to damage for the exact amount healed
-        target.takeDamage(actualHealingDone);
+        // Restore health to before healing using setHealth (bypasses defense)
+        target.setHealth(healthBeforeHealing);
     }
 
     @Override

@@ -22,7 +22,7 @@ public class MeleeAttackStrategy implements AttackStrategy {
     @Override
     public int calculateDamage(Character attacker, Character target) {
         // Base damage = attacker's attack power
-        int baseDamage = attacker.getStats().attack();
+        int baseDamage = attacker.getStats().attackPower();
         // Add 20% bonus (multiply by 1.2)
         return (int) (baseDamage * 1.2);
     }
